@@ -50,14 +50,15 @@ public static class ObjParser
     /// <exception cref="System.FormatException">При некорректном формате координат.</exception>
     private static Coordinate GetCoordinate(string line)
     {
+        line = line.Replace('.', ',');
         var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
+        
         return new Coordinate
-        {
-            X = float.Parse(parts[1]),
-            Y = float.Parse(parts[2]),
-            Z = float.Parse(parts[3])
-        };
+        (
+            double.Parse(parts[1]),
+            double.Parse(parts[2]),
+            double.Parse(parts[3])
+        );
     }
     
     /// <summary>

@@ -3,39 +3,52 @@ using System.Text;
 
 namespace Web3DViewer.Models;
 
-/**
- * Модель obj объекта7
- */
+/// <summary>
+/// 3D модель в формате OBJ, содержащую коллекции вершин и граней.
+/// </summary>
+/// <remarks>
+/// Используется для хранения данных 3D моделей,
+/// загруженных из файлов формата Wavefront OBJ.
+/// </remarks>
 public class ObjModel
 {
-    /**
-     * Вершины.
-     */
+    /// <summary>
+    /// Коллекция вершин модели.
+    /// </summary>
+    /// <value>
+    /// Список объектов <see cref="Coordinate"/>, представляющих вершины модели в 3D пространстве.
+    /// </value>
     public List<Coordinate> Vertices { get; set;  } = new();
     
-    /**
-     * Индексы вершин для каждого полигона.
-     */
+    /// <summary>
+    /// Коллекция полигонов модели.
+    /// </summary>
+    /// <value>
+    /// Список объектов <see cref="Face"/>, где каждый объект представляет одну грань модели.
+    /// </value>
     public List<Face> Faces { get; set; } = new();
-
-    /**
-     * 
-     */
+    
+    /// <summary>
+    /// Формирует строковое представление модели.
+    /// </summary>
+    /// <returns>
+    /// Строка, содержащая количество вершин и граней, а также их подробное представление.
+    /// </returns>
     public override string ToString()
     {
         var result = new StringBuilder();
 
-        result.AppendLine($"Vertices: {Vertices.Count}");
-        result.AppendLine($"Faces: {Faces.Count}");
+        result.AppendLine($"Vertices count: {Vertices.Count}");
+        result.AppendLine($"Faces count: {Faces.Count}");
 
         foreach (var coordinate in Vertices)
         {
-            Console.WriteLine("v " + coordinate);
+            result.AppendLine("v " + coordinate);
         }
 
         foreach (var face in Faces)
         {
-            Console.WriteLine("f " + face);
+            result.AppendLine("f " + face);
         }
         
         return result.ToString();

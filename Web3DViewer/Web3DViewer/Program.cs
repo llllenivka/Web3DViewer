@@ -6,7 +6,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        var obj = ObjParser.Parse("simple_cube.obj");
+        var obj = ObjParser.Parse("box.obj");
         Console.WriteLine(obj);
         // var builder = WebApplication.CreateBuilder(args);
         //
